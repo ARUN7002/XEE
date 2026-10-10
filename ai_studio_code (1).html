@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Scaler — Pro Culinary Calculator</title>
+  <!-- Link external CSS stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app-container">
+    <header>
+      <h1>Recipe Scaler</h1>
+      <p>Precision dynamic ingredient calculator</p>
+    </header>
+
+    <!-- LAYER 2: USER INTERFACE / INPUT FIELDS -->
+    <div class="card">
+      <div id="errorBanner" class="error-banner"></div>
+
+      <form id="scalerForm" novalidate>
+        <div class="form-group">
+          <label for="dishName">Recipe / Dish Name</label>
+          <input type="text" id="dishName" placeholder="e.g., Artisan Sourdough" required />
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label for="origServing">Original Servings</label>
+            <input type="number" id="origServing" step="any" placeholder="e.g., 2" required />
+          </div>
+          <div class="form-group">
+            <label for="wantedServing">Desired Servings</label>
+            <input type="number" id="wantedServing" step="any" placeholder="e.g., 6" required />
+          </div>
+        </div>
+
+        <div class="section-title">
+          <span>Ingredients (Set of 3)</span>
+        </div>
+
+        <!-- Ingredient Row 1 -->
+        <div class="grid-3">
+          <input type="text" id="ingName1" placeholder="Ingredient 1 (e.g., Flour)" required />
+          <input type="number" id="ingAmt1" step="any" placeholder="Amount" required />
+          <input type="text" id="ingUnit1" placeholder="Unit (g, ml, cups)" />
+        </div>
+
+        <!-- Ingredient Row 2 -->
+        <div class="grid-3">
+          <input type="text" id="ingName2" placeholder="Ingredient 2 (e.g., Water)" required />
+          <input type="number" id="ingAmt2" step="any" placeholder="Amount" required />
+          <input type="text" id="ingUnit2" placeholder="Unit (g, ml, cups)" />
+        </div>
+
+        <!-- Ingredient Row 3 -->
+        <div class="grid-3">
+          <input type="text" id="ingName3" placeholder="Ingredient 3 (e.g., Salt)" required />
+          <input type="number" id="ingAmt3" step="any" placeholder="Amount" required />
+          <input type="text" id="ingUnit3" placeholder="Unit (g, ml, tsp)" />
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn-primary">Scale Recipe</button>
+          <button type="button" id="clearBtn" class="btn-secondary">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- LAYER 5: DISPLAY RESULT -->
+    <div id="resultContainer" class="card">
+      <div class="result-header">
+        <div>
+          <h2 id="resDishName">—</h2>
+          <small id="resServingInfo" style="color: var(--text-muted);"></small>
+        </div>
+        <div class="ratio-badge" id="resScaleFactor">Factor: 1x</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ingredient</th>
+            <th>Original</th>
+            <th>Scaled Amount</th>
+          </tr>
+        </thead>
+        <tbody id="resultTableBody"></tbody>
+      </table>
+
+      <div class="storage-indicator" id="storageTimestamp"></div>
+    </div>
+  </div>
+
+  <!-- Link external JavaScript logic -->
+  <script src="script.js"></script>
+</body>
+</html>
